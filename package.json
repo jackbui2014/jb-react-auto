@@ -1,0 +1,23 @@
+{
+  "name": "jb-react-auto",
+  "version": "1.0.0",
+  "description": "This package helps us to create automatically a new ReactJS component",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jackbui2014/jb-react-auto.git"
+  },
+  "keywords": [
+    "ReactJS",
+    "Auto"
+  ],
+  "author": "Jack Bui",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jackbui2014/jb-react-auto/issues"
+  },
+  "homepage": "https://github.com/jackbui2014/jb-react-auto#readme"
+}
