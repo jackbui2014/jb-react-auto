@@ -1,0 +1,11 @@
+import React, {Fragment} from 'react';
+import {Route} from 'react-router-dom';
+
+import {{name}} from '../pages/{{name}}';
+
+const {{name}}s = ({match}) => (
+	<Fragment>
+		<Route path={`$match.url/`} component={ {{name}} } />
+	</Fragment>
+);
+export default {{name}}s;

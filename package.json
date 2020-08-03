@@ -6,6 +6,9 @@
   "scripts": {
     "test": "test"
   },
+  "bin":{
+    "jb-new":"./cli.js"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/jackbui2014/jb-react-auto.git"
@@ -19,5 +22,9 @@
   "bugs": {
     "url": "https://github.com/jackbui2014/jb-react-auto/issues"
   },
-  "homepage": "https://github.com/jackbui2014/jb-react-auto#readme"
+  "homepage": "https://github.com/jackbui2014/jb-react-auto#readme",
+  "dependencies": {
+    "fs": "0.0.1-security",
+    "handlebars": "^4.7.6"
+  }
 }
