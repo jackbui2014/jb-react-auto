@@ -45,7 +45,7 @@ const createFileFromTemplate = (templatePath, FilePath, componentName) =>{
 	    var source = data.toString();
 	    // call the render function
 	    var mainContent =  renderToString(source, jsonData);
-	    createFile(FilePath+componentName+'/'+componentName+'.jsx', mainContent);
+	    createFile(FilePath, mainContent);
 	    return true;
 	  } else {
 	    return false;
@@ -56,10 +56,8 @@ const createFileFromTemplate = (templatePath, FilePath, componentName) =>{
 exports.createFileFromTemplate = createFileFromTemplate;
 
 const createComponent = (dir, componentName)=>{
-	console.log(dir);
-	console.log(componentName);
 	createDir('/'+dir+componentName);
-	createFileFromTemplate(path.join(__dirname, '/templates/maincomponentjsfile.hbs'), dir, componentName);
+	createFileFromTemplate(path.join(__dirname, '/templates/maincomponentjsfile.hbs'), dir+componentName+'/'+componentName+'.jsx', componentName);
 	var pckContent = '{ "main": "'+componentName+'.jsx" } ';
 	createFile(dir+componentName+'/package.json', pckContent);
 	createFile(dir+componentName+'/'+componentName+'.scss', '');
@@ -69,6 +67,7 @@ const createComponent = (dir, componentName)=>{
 }
 exports.createComponent = createComponent;
 const createRoute = (componentName) => {
-	createFileFromTemplate(path.join(__dirname, '/templates/route.hbs'), 'src/routes/', componentName+'s');
+	createDir('/src/routes');
+	createFileFromTemplate(path.join(__dirname, '/templates/route.hbs'), 'src/routes/'+componentName+'s.js', componentName);
 }
 exports.createRoute = createRoute;

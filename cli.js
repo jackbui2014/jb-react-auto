@@ -4,11 +4,16 @@
 const [,, ...args] = process.argv
 
 const c = require('./index');
-const allowArray = ['component', 'page', 'layout'];
+const allowArray = ['component', 'page', 'layout','route'];
 if( typeof args['0'] !== 'undefined'){
 	if( allowArray.indexOf(args['0'].toLowerCase()) != -1 ){
 		if( typeof args['1'] !== 'undefined'){
-			c.createComponent('src/'+args['0']+'s'+'/', args['1']);
+			if( args['0'].toLowerCase() == 'route'){
+				c.createRoute(args['1']);
+			}
+			else{
+				c.createComponent('src/'+args['0']+'s'+'/', args['1']);
+			}
 		}
 		else{
 			console.log('Error!');
