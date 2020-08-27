@@ -6,8 +6,8 @@
   "scripts": {
     "test": "test"
   },
-  "bin":{
-    "jbnew":"./cli.js"
+  "bin": {
+    "jbreact": "./cli.js"
   },
   "repository": {
     "type": "git",

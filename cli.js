@@ -4,26 +4,87 @@
 const [,, ...args] = process.argv
 
 const c = require('./index');
-const allowArray = ['component', 'page', 'layout','route'];
+const allowArray = ['create:component', 'create:page', 'create:layout','create:route', 'create:config', 'set:layout'];
 if( typeof args['0'] !== 'undefined'){
-	if( allowArray.indexOf(args['0'].toLowerCase()) != -1 ){
-		if( typeof args['1'] !== 'undefined'){
-			if( args['0'].toLowerCase() == 'route'){
+	switch (args['0']){
+		case 'create:page': 
+			if( allowArray.indexOf(args['0'].toLowerCase()) != -1 ){
+				if( typeof args['1'] !== 'undefined'){
+					c.createComponent('src/pages/', args['1']);
+				}
+				else{
+					console.log('Error!');
+					return false;
+				}
 				c.createRoute(args['1']);
+				return true;
 			}
-			else{
-				c.createComponent('src/'+args['0']+'s'+'/', args['1']);
+			break;
+		case 'create:component': 
+			if( allowArray.indexOf(args['0'].toLowerCase()) != -1 ){
+				if( typeof args['1'] !== 'undefined'){
+					c.createComponent('src/components/', args['1']);
+				}
+				else{
+					console.log('Error!');
+					return false;
+				}
+				return true;
 			}
-		}
-		else{
-			console.log('Error!');
+
+		 break;
+		case 'create:layout' :
+			if( allowArray.indexOf(args['0'].toLowerCase()) != -1 ){
+				if( typeof args['1'] !== 'undefined'){
+					c.createLayout('src/layouts/', args['1']);
+				}
+				else{
+					console.log('Error!');
+					return false;
+				}
+				return true;
+			}
+		break;
+		case 'create:route' :
+			if( allowArray.indexOf(args['0'].toLowerCase()) != -1 ){
+				if( typeof args['1'] !== 'undefined'){
+					c.createRoute(args['1']);
+				}
+				else{
+					console.log('Error!');
+					return false;
+				}
+				return true;
+			}
+		break;
+		case 'create:config' :
+			if( allowArray.indexOf(args['0'].toLowerCase()) != -1 ){
+				if( typeof args['1'] !== 'undefined'){
+					c.createConfig(args['1']);
+				}
+				else{
+					console.log('Error!');
+					return false;
+				}
+				return true;
+			}
+		break;
+		case 'set:layout' :
+			if( allowArray.indexOf(args['0'].toLowerCase()) != -1 ){
+				if( typeof args['1'] !== 'undefined'){
+					c.createConfig(args['1']);
+				}
+				else{
+					console.log('Error!');
+					return false;
+				}
+				return true;
+			}
+		break;
+		default: 
+			console.log('Invalid syntax!');
 			return false;
-		}
-		if( args['0'].toLowerCase() == 'page'){
-			c.createRoute(args['1']);
-		}
-		return true;
 	}
 }
-console.log('Error!');
+console.log('Invalid command!');
 return false;

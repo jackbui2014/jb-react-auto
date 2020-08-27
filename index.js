@@ -66,8 +66,23 @@ const createComponent = (dir, componentName)=>{
 	
 }
 exports.createComponent = createComponent;
+
+const createLayout = (dir, layoutName)=>{
+	createDir('/'+dir+layoutName);
+	createComponent(dir+layoutName+'/', 'Body');
+	createComponent(dir+layoutName+'/', 'Header');
+	createComponent(dir+layoutName+'/', 'Footer');
+	createComponent(dir+layoutName+'/', 'Sidebar');
+}
+exports.createLayout = createLayout;
 const createRoute = (componentName) => {
 	createDir('/src/routes');
 	createFileFromTemplate(path.join(__dirname, '/templates/route.hbs'), 'src/routes/'+componentName+'s.js', componentName);
 }
 exports.createRoute = createRoute;
+
+const createConfig = (configName) => {
+	createDir('/src/config');
+	createFileFromTemplate(path.join(__dirname, '/templates/config.hbs'), 'src/config/'+configName+'.js',configName);
+}
+exports.createConfig = createConfig;
