@@ -15,6 +15,7 @@ const createDir = (dirPath)=>{
 exports.createDir = createDir;
 const createFile = (filePath, fileContent) => {
 	fs.writeFile(filePath, fileContent, (error)=>{
+		console.log(error);
 		if( error){
 			console.log('error');
 		}
@@ -27,7 +28,7 @@ exports.createFile = createFile;
 
 // this will be called after the file is read
 const renderToString = (source, data) => {
-  var template = handlebars.compile(source);
+  var template = handlebars.compile(source, {noEscape: true});
   var outputString = template(data);
   return outputString;
 }
@@ -86,3 +87,64 @@ const createConfig = (configName) => {
 	createFileFromTemplate(path.join(__dirname, '/templates/config.hbs'), 'src/config/'+configName+'.js',configName);
 }
 exports.createConfig = createConfig;
+const setup = () => {
+	createConfig('config');
+	createComponent('src/components/','Component1');
+	createLayout('src/layouts/', 'default');
+	createComponent('src/pages/', 'Page1');
+	createRoute('Page1');
+	updateRoutes();
+	createMainFile();
+}
+exports.setup = setup;
+
+const createMainFile = () => {
+	createFileFromTemplate(path.join(__dirname, '/templates/index.hbs'), 'src/index.js', 'index');
+	createFileFromTemplate(path.join(__dirname, '/templates/app.hbs'), 'src/App.js', 'App');
+	createFileFromTemplate(path.join(__dirname, '/templates/configureStore.hbs'), 'src/config/configureStore.js', 'configStore');
+	createDir('/src/reducers');
+	createFileFromTemplate(path.join(__dirname, '/templates/reducers.hbs'), 'src/reducers/reducers.js', 'reducers');
+	createFileFromTemplate(path.join(__dirname, '/templates/themeoptions.hbs'), 'src/reducers/ThemeOptions.js', 'ThemeOptions');
+
+}
+exports.createMainFile = createMainFile;
+const updateRoutes = () => {
+	//joining path of directory 
+	const directoryPath = 'src/routes';
+	//passsing directoryPath and callback function
+	fs.readdir(directoryPath, function (err, files) {
+	    //handling error
+	    if (err) {
+	        return console.log('Unable to scan directory: ' + err);
+	    } 
+	    var routesImport = '';
+	    var routesList = '';
+	    var fileE = '';
+	    //listing all files using forEach
+	    files.forEach(function (file) {
+	        if( file !='MainRoutes.js'){
+	        	 fileE = file.split('.');
+	        	routesImport +=' const '+fileE[0]+ ' = lazy(() => import('+"'./"+fileE[0]+"'));\n";
+	        	routesList += '<Suspense fallback={ <div className="loader-container"><div className="loader-inner">Loadding... </div></div>}> <Route path="'+fileE[0].toLowerCase()+'" component={'+fileE[0]+'} /></Suspense>\n';
+	        }
+	    });
+	    var jsonData = {
+	    	'routesImport': routesImport,
+	    	'routesList': routesList
+	    }
+	    var filePath = 'src/routes/MainRoutes.js';
+	    fs.readFile(path.join(__dirname, '/templates/mainroutes.hbs'), function(err, data){
+			  if (!err) {
+			    // make the buffer into a string
+			    var source = data.toString();
+			    // call the render function
+			    var mainContent =  renderToString(source, jsonData);
+			    createFile(filePath, mainContent);
+			    return true;
+			  } else {
+			    return false;
+			  }
+		});
+	});
+}
+exports.updateRoutes = updateRoutes;

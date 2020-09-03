@@ -1,17 +1,17 @@
 import React, {Fragment, Component} from 'react';
+import MainRoutes from './routes/MainRoutes';
 
-import './{{ name }}.scss';
 
-class {{ name }} extends Component{
+class App extends Component{
 	constructor(props){
 		super(props);
 	}
 	rernder(){
 		return (
 			<Fragment>
-				content here...
+				<MainRoutes />
 			</Fragment>
 		);
 	}
 }
-export default {{ name }};
+export default App;
