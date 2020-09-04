@@ -125,7 +125,7 @@ const updateRoutes = () => {
 	        if( file !='MainRoutes.js'){
 	        	 fileE = file.split('.');
 	        	routesImport +=' const '+fileE[0]+ ' = lazy(() => import('+"'./"+fileE[0]+"'));\n";
-	        	routesList += '<Suspense fallback={ <div className="loader-container"><div className="loader-inner">Loadding... </div></div>}> <Route path="'+fileE[0].toLowerCase()+'" component={'+fileE[0]+'} /></Suspense>\n';
+	        	routesList += '<Suspense fallback={ <div className="loader-container"><div className="loader-inner">Loadding... </div></div>}> <Route path="/'+fileE[0].toLowerCase()+'" component={'+fileE[0]+'} /></Suspense>\n';
 	        }
 	    });
 	    var jsonData = {
