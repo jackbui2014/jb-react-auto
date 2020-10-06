@@ -91,8 +91,9 @@ const setup = () => {
 	createConfig('config');
 	createComponent('src/components/','Component1');
 	createLayout('src/layouts/', 'default');
-	createComponent('src/pages/', 'Page1');
-	createRoute('Page1');
+	createComponent('src/pages/', 'Home');
+	createFileFromTemplate(path.join(__dirname, '/templates/home.hbs'), 'src/pages/Home/Home.jsx', 'Home');
+	createRoute('Home');
 	updateRoutes();
 	createMainFile();
 }
@@ -105,6 +106,7 @@ const createMainFile = () => {
 	createDir('/src/reducers');
 	createFileFromTemplate(path.join(__dirname, '/templates/reducers.hbs'), 'src/reducers/reducers.js', 'reducers');
 	createFileFromTemplate(path.join(__dirname, '/templates/themeoptions.hbs'), 'src/reducers/ThemeOptions.js', 'ThemeOptions');
+	createFileFromTemplate(path.join(__dirname, '/templates/package.hbs'), 'src/reducers/package.json', 'package');
 
 }
 exports.createMainFile = createMainFile;
@@ -122,10 +124,15 @@ const updateRoutes = () => {
 	    var fileE = '';
 	    //listing all files using forEach
 	    files.forEach(function (file) {
-	        if( file !='MainRoutes.js'){
-	        	 fileE = file.split('.');
+	    	 fileE = file.split('.');
+	        if( file !='MainRoutes.js' && file !='Homes.js'){
+	        	
 	        	routesImport +=' const '+fileE[0]+ ' = lazy(() => import('+"'./"+fileE[0]+"'));\n";
 	        	routesList += '<Suspense fallback={ <div className="loader-container"><div className="loader-inner">Loadding... </div></div>}> <Route path="/'+fileE[0].toLowerCase()+'" component={'+fileE[0]+'} /></Suspense>\n';
+	        }
+	        else if( file == 'Homes.js'){
+	        	routesImport +=' const '+fileE[0]+ ' = lazy(() => import('+"'./"+fileE[0]+"'));\n";
+	        	routesList += '<Suspense fallback={ <div className="loader-container"><div className="loader-inner">Loadding... </div></div>}> <Route path="/" component={'+fileE[0]+'} /></Suspense>\n';
 	        }
 	    });
 	    var jsonData = {
