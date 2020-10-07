@@ -13,6 +13,7 @@
     "type": "git",
     "url": "git+https://github.com/jackbui2014/jb-react-auto.git"
   },
+  "publishConfig": { "registry": "https://npm.pkg.github.com/" },
   "keywords": [
     "ReactJS",
     "Auto"
