@@ -7,6 +7,8 @@ You can also manage your components, pages, layouts, routes by command line.
  `npx create-react-app my-app`
  - Install jb-react-auto package 
  `npm install jb-react-auto`
+ - Install all dependencies 
+ `npm install`
  - Setup your project
  `jbreact setup`
 ## Valid commands 

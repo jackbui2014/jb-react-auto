@@ -1,6 +1,6 @@
 {
   "name": "jb-react-auto",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "This package helps us to create automatically a new ReactJS component",
   "main": "index.js",
   "scripts": {
@@ -13,7 +13,6 @@
     "type": "git",
     "url": "git+https://github.com/jackbui2014/jb-react-auto.git"
   },
-  "publishConfig": { "registry": "https://npm.pkg.github.com/" },
   "keywords": [
     "ReactJS",
     "Auto"

@@ -106,7 +106,7 @@ const createMainFile = () => {
 	createDir('/src/reducers');
 	createFileFromTemplate(path.join(__dirname, '/templates/reducers.hbs'), 'src/reducers/reducers.js', 'reducers');
 	createFileFromTemplate(path.join(__dirname, '/templates/themeoptions.hbs'), 'src/reducers/ThemeOptions.js', 'ThemeOptions');
-	createFileFromTemplate(path.join(__dirname, '/templates/package.hbs'), 'src/reducers/package.json', 'package');
+	createFileFromTemplate(path.join(__dirname, '/templates/package.hbs'), './package.json', 'package');
 
 }
 exports.createMainFile = createMainFile;
