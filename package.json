@@ -1,6 +1,6 @@
 {
   "name": "jb-react-auto",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "This package helps us to create automatically a new ReactJS component",
   "main": "index.js",
   "scripts": {
