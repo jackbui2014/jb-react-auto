@@ -2,7 +2,6 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter } from 'react-router-dom';
 import App from './App';
-import * as serviceWorker from './serviceWorker';
 import configureStore from './config/configureStore' ;
 import { Provider } from 'react-redux';
 
@@ -20,4 +19,3 @@ const renderApp = Component => {
 	);
 }
 renderApp(App);
-serviceWorker.unregister();
