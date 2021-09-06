@@ -3,16 +3,11 @@ import React, {Suspense, lazy, Fragment, Component} from 'react';
 
 {{routesImport}}
 
-class MainRoutes extends Component {
-	constructor(props){
-		super(props);
-	}
-	render(){
-		return (
-			<Fragment>
-				{{routesList}}
-			</Fragment>
-		);
-	}
+const MainRoutes =(props)=>{
+	return (
+		<Fragment>
+			{{routesList}}
+		</Fragment>
+	);
 }
 export default MainRoutes;

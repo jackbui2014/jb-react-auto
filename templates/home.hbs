@@ -4,18 +4,13 @@ import './Home.scss';
 const Header = React.lazy(() => import('../../layouts/'+globalSettings.layout+'/Header/Header'));
 const Footer = React.lazy(() => import('../../layouts/'+globalSettings.layout+'/Footer/Footer'));
 const Body = React.lazy(() => import('../../layouts/'+globalSettings.layout+'/Body/Body'));
-class Home extends Component{
-	constructor(props){
-		super(props);
-	}
-	render(){
-		return (
-			<Fragment>
-				<Header />
-				<Body />
-				<Footer />	
-			</Fragment>
-		);
-	}
+const Home =(props)=>{
+	return (
+		<Fragment>
+			<Header />
+			<Body />
+			<Footer />	
+		</Fragment>
+	);
 }
 export default Home;

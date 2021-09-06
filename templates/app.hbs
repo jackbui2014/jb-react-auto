@@ -3,16 +3,11 @@ import MainRoutes from './routes/MainRoutes';
 import 'bootstrap/dist/css/bootstrap.css';
 import 'bootstrap/dist/js/bootstrap.js';
 
-class App extends Component{
-	constructor(props){
-		super(props);
-	}
-	render(){
-		return (
-			<Fragment>
-				<MainRoutes />
-			</Fragment>
-		);
-	}
+const App =(props)=>{
+	return (
+		<Fragment>
+			<MainRoutes />
+		</Fragment>
+	);
 }
 export default App;
