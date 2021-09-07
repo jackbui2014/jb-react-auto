@@ -163,6 +163,7 @@ const removeDir = function(path) {
 		files.forEach(function(filename) {
 		  if (fs.statSync(path + "/" + filename).isDirectory()) {
 			removeDir(path + "/" + filename)
+			fs.rmdir(path);
 		  } else {
 			fs.unlinkSync(path + "/" + filename)
 		  }
