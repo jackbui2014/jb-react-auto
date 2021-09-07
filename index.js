@@ -178,4 +178,4 @@ const resetAll = () =>{
 	const directoryPath = './src';
 	removeDir(directoryPath);
 }
-expoerts.resetAll = resetAll;
+exports.resetAll = resetAll;
