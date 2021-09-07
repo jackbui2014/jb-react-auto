@@ -163,7 +163,9 @@ const removeDir = (pathToDir) =>{
 	    } 
 	    //listing all files using forEach
 	    files.forEach(function (file) {
+			console.log(file);
 	    	fs.unlinkSync(file);
+
 	    });
 	});
   }
