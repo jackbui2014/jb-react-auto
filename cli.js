@@ -4,7 +4,7 @@
 const [,, ...args] = process.argv
 
 const c = require('./index');
-const allowArray = ['create:component', 'create:page', 'create:layout','create:route', 'create:config', 'update:routes', 'setup'];
+const allowArray = ['create:component', 'create:page', 'create:layout','create:route', 'create:config', 'update:routes', 'setup', 'reset'];
 if( typeof args['0'] !== 'undefined'){
 	switch (args['0']){
 		case 'create:page': 
@@ -82,6 +82,13 @@ if( typeof args['0'] !== 'undefined'){
 				
 				c.setup();
 				`npm install node-sass`;
+				return true;
+			}
+		break;
+		case 'reset' :
+			if( allowArray.indexOf(args['0'].toLowerCase()) != -1 ){
+				
+				c.resetAll();
 				return true;
 			}
 		break;
