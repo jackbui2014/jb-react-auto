@@ -155,7 +155,7 @@ const updateRoutes = () => {
 	});
 }
 exports.updateRoutes = updateRoutes;
-const removeDir = (pathToDir) =>{
+const removeDir = (directoryPath) =>{
 	fs.readdir(directoryPath, function (err, files) {
 	    //handling error
 	    if (err) {
