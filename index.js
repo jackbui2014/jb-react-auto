@@ -178,12 +178,5 @@ const removeDir = function(path) {
 const resetAll = () =>{
 	const dirs = './src';
 	removeDir(dirs);
-	fs.rmdir(dirs, function(err) {
-		if (err) {
-		  throw err
-		} else {
-		  console.log("Successfully removed the empty directory!")
-		}
-	  });
 }
 exports.resetAll = resetAll;
