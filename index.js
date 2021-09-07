@@ -163,13 +163,7 @@ const removeDir = function(path) {
 		files.forEach(function(filename) {
 		  if (fs.statSync(path + "/" + filename).isDirectory()) {
 			removeDir(path + "/" + filename)
-			fs.rmdir(path, function(err) {
-				if (err) {
-				  throw err
-				} else {
-				  console.log("Successfully removed the empty directory!")
-				}
-			  });
+			
 		  } else {
 			fs.unlinkSync(path + "/" + filename)
 		  }
@@ -184,5 +178,12 @@ const removeDir = function(path) {
 const resetAll = () =>{
 	const dirs = './src';
 	removeDir(dirs);
+	fs.rmdir(dirs, function(err) {
+		if (err) {
+		  throw err
+		} else {
+		  console.log("Successfully removed the empty directory!")
+		}
+	  });
 }
 exports.resetAll = resetAll;
