@@ -156,21 +156,15 @@ const updateRoutes = () => {
 }
 exports.updateRoutes = updateRoutes;
 const removeDir = (directoryPath) =>{
-	fs.readdir(directoryPath, function (err, files) {
-	    //handling error
-	    if (err) {
-	        return console.log('Unable to scan directory: ' + err);
-	    } 
-	    //listing all files using forEach
-	    files.forEach(function (file) {
-			console.log(file);
-	    	fs.unlinkSync(file);
-
-	    });
-	});
+	if( fs.existsSync(directoryPath) ){
+		fs.removeDir(directoryPath);
+	}
+	else{
+		console.log("Directory doesn't exist");
+	}
   }
 const resetAll = () =>{
-	const directoryPath = './src';
-	removeDir(directoryPath);
+	const dirs = './src';
+	removeDir(dirs);
 }
 exports.resetAll = resetAll;
