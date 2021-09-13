@@ -9,8 +9,12 @@ You can also manage your components, pages, layouts, routes by command line.
  `npm install -g jb-react-auto`
  - Setup your project
  `jbreact setup`
+ - Setup route for home page
+ `jbreact update:routes`
  - Install all dependencies 
  `npm install`
+ - Start app
+ `npm start`
 ## Valid commands 
 - Setup your project
 `jbreact setup`
@@ -27,3 +31,8 @@ You can also manage your components, pages, layouts, routes by command line.
 - Update routes after create a new route 
 `jbreact update:routes`
 
+## Change log
+- version 1.1:
+ + Update all class components to functional components.
+- version 1.0:
+ + The first version.
