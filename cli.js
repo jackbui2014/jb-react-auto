@@ -11,7 +11,7 @@ if( typeof args['0'] !== 'undefined'){
 			if( allowArray.indexOf(args['0'].toLowerCase()) != -1 ){
 				if( typeof args['1'] !== 'undefined'){
 					c.createComponent('src/pages/', args['1']);
-					c.createPageContent(args['1']);
+					c.createPageContent('src/layouts/', args['1']);
 				}
 				else{
 					console.log('Error!');
