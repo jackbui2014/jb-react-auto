@@ -10,7 +10,7 @@ if( typeof args['0'] !== 'undefined'){
 		case 'create:page': 
 			if( allowArray.indexOf(args['0'].toLowerCase()) != -1 ){
 				if( typeof args['1'] !== 'undefined'){
-					c.createComponent('src/pages/', args['1']);
+					c.createPage('src/pages/', args['1']);
 					c.createPageContent('src/layouts/', args['1']);
 				}
 				else{

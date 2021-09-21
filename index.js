@@ -66,7 +66,17 @@ const createComponent = (dir, componentName)=>{
 	createFile(dir+componentName+'/__Test__/'+componentName+'.js', '');
 	
 }
-exports.createComponent = createComponent;
+const createPage = (dir, componentName)=>{
+	createDir('/'+dir+componentName);
+	createFileFromTemplate(path.join(__dirname, '/templates/pageContent.hbs'), dir+componentName+'/'+componentName+'.jsx', componentName);
+	var pckContent = '{ "main": "'+componentName+'.jsx" } ';
+	createFile(dir+componentName+'/package.json', pckContent);
+	createFile(dir+componentName+'/'+componentName+'.scss', '');
+	createDir('/'+dir+componentName+'/__Test__');
+	createFile(dir+componentName+'/__Test__/'+componentName+'.js', '');
+	
+}
+exports.createPage = createPage;
 
 const createPageContent = (dir, componentName) =>{
 	const folders = fs.readdirSync(dir);

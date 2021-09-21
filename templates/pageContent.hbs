@@ -1,16 +1,16 @@
 import React, {Fragment, Component} from 'react';
 import {globalSettings} from '../../config/config.js';
-import './Home.scss';
+import './{{name}}.scss';
 const Header = React.lazy(() => import('../../layouts/'+globalSettings.layout+'/Header/Header'));
 const Footer = React.lazy(() => import('../../layouts/'+globalSettings.layout+'/Footer/Footer'));
-const HomeContent = React.lazy(() => import('../../layouts/'+globalSettings.layout+'/Body/HomeContent/HomeContent.jsx'));
-const Home =(props)=>{
+const {{name}}Content = React.lazy(() => import('../../layouts/'+globalSettings.layout+'/Body/{{name}}Content/{{name}}Content.jsx'));
+const {{name}} =(props)=>{
 	return (
 		<Fragment>
 			<Header />
-			<HomeContent />
+			<{{name}}Content />
 			<Footer />	
 		</Fragment>
 	);
 }
-export default Home;
+export default {{name}};
