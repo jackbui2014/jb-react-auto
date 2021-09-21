@@ -68,6 +68,18 @@ const createComponent = (dir, componentName)=>{
 }
 exports.createComponent = createComponent;
 
+const createPageContent = (componentName) =>{
+	const folders = fs.readdirSync('/src/layouts');
+	if (folders.length > 0) {
+		folders.forEach(function(foldername) {
+			if (fs.statSync("/src/layouts/" + foldername).isDirectory()) {
+				createComponent("/src/layouts/"+foldername, componentName+"Content");
+			}
+		});
+	}
+}
+exports.createPageContent = createPageContent;
+
 const createLayout = (dir, layoutName)=>{
 	createDir('/'+dir+layoutName);
 	createComponent(dir+layoutName+'/', 'Body');
