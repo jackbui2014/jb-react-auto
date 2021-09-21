@@ -149,11 +149,11 @@ const updateRoutes = () => {
 	    	 fileE = file.split('.');
 	        if( file !='MainRoutes.js' && file !='Homes.js'){
 	        	
-	        	routesImport +=' const '+fileE[0]+ ' = lazy(() => import('+"'./"+fileE[0]+"'));\n";
+	        	routesImport +=' const '+fileE[0]+ 'Routes = lazy(() => import('+"'./"+fileE[0]+"'));\n";
 	        	routesList += '<Suspense fallback={ <div className="loader-container"><div className="loader-inner">Loadding... </div></div>}> <Route path="/'+fileE[0].toLowerCase()+'" component={'+fileE[0]+'Routes} /></Suspense>\n';
 	        }
 	        else if( file == 'Homes.js'){
-	        	routesImport +=' const '+fileE[0]+ ' = lazy(() => import('+"'./"+fileE[0]+"'));\n";
+	        	routesImport +=' const '+fileE[0]+ 'Routes = lazy(() => import('+"'./"+fileE[0]+"'));\n";
 	        	routesList += '<Suspense fallback={ <div className="loader-container"><div className="loader-inner">Loadding... </div></div>}> <Route path="/" component={'+fileE[0]+'Routes} /></Suspense>\n';
 	        }
 	    });
