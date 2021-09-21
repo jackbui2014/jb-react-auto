@@ -24,7 +24,12 @@ if( typeof args['0'] !== 'undefined'){
 		case 'create:component': 
 			if( allowArray.indexOf(args['0'].toLowerCase()) != -1 ){
 				if( typeof args['1'] !== 'undefined'){
-					c.createComponent('src/components/', args['1']);
+					if( typeof args['2'] !== 'undefined'){
+						c.createComponent(args['2'], args['1']);
+					}
+					else{
+						c.createComponent('src/components/', args['1']);
+					}
 				}
 				else{
 					console.log('Error!');
