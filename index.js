@@ -73,7 +73,7 @@ const createPageContent = (componentName) =>{
 	if (folders.length > 0) {
 		folders.forEach(function(foldername) {
 			if (fs.statSync("/src/layouts/" + foldername).isDirectory()) {
-				createComponent("/src/layouts/"+foldername, componentName+"Content");
+				createComponent("/src/layouts/"+foldername+"/Body", componentName+"Content");
 			}
 		});
 	}
