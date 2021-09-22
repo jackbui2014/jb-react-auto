@@ -66,6 +66,8 @@ const createComponent = (dir, componentName)=>{
 	createFile(dir+componentName+'/__Test__/'+componentName+'.js', '');
 	
 }
+exports.createComponent = createComponent;
+
 const createPage = (dir, componentName)=>{
 	createDir('/'+dir+componentName);
 	createFileFromTemplate(path.join(__dirname, '/templates/pageContent.hbs'), dir+componentName+'/'+componentName+'.jsx', componentName);
